@@ -45,4 +45,5 @@ int main()
 
 		cin >> a;
 	}
+	
 }
