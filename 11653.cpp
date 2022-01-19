@@ -3,14 +3,13 @@ using namespace std;
 class math
 {
 private:
-	int arr[1000001];
-	int a, b;
+	int arr[2*123456+1];
+	int a;
 public:
-	math(int a, int b)
+	math(int a)
 	{
 		this->a = a;
-		this->b = b;
-		for (int i = 0; i < 1000001; i++)
+		for (int i = 0; i < 123456*2+1; i++)
 		{
 			arr[i] = i;
 		}
@@ -18,28 +17,32 @@ public:
 	}
 	void print()
 	{
-		for (int i = 2; i <= b; i++)
+		int count = 0;
+		for (int i = 2; i <= a*2; i++)
 		{
 			if (arr[i] == 0) continue;
-			for (int j = i*2; j <= b; j+=i)
+			for (int j = i*2; j <= a*2; j+=i)
 			{
 				arr[j] = 0;
 			}
 		}
-		for (int i = a; i <= b; i++)
+		for (int i = a+1; i <= a*2; i++)
 		{
 			if (arr[i] != 0)
-				cout << arr[i] << "\n";
+				count++;
 		}
+		cout << count << "\n";
 	}
 };
 int main()
 {
-	int a, b;
-	cin >> a >> b;
-	
-	math c = math(a, b);
+	int a;
+	cin >> a;
+	while (a != 0)
+	{
+		math c = math(a);
+		c.print();
 
-	c.print();
-	
+		cin >> a;
+	}
 }
